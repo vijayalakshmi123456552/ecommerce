@@ -1,0 +1,1085 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NovaCart | Products</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    background:#fff;
+    color:#222;
+}
+
+h1,h2,h3,h4,h5{
+    font-family:Montserrat,sans-serif;
+    font-weight:700;
+}
+
+/* NAVBAR */
+
+.navbar{
+    padding:14px 0;
+    background:rgba(255,255,255,.97)!important;
+    backdrop-filter:blur(15px);
+    box-shadow:0 5px 25px rgba(0,0,0,.06);
+}
+
+.navbar-brand{
+    font-family:Montserrat;
+    font-weight:800;
+    font-size:25px;
+    color:#111!important;
+}
+
+.brand-icon{
+    display:inline-flex;
+    width:42px;
+    height:42px;
+    align-items:center;
+    justify-content:center;
+    background:#111;
+    color:white;
+    border-radius:12px;
+    margin-right:8px;
+}
+
+.nav-link{
+    color:#333!important;
+    margin-left:15px;
+}
+
+/* HERO */
+
+.hero{
+    padding:150px 0 80px;
+    background:#f7f7f7;
+    text-align:center;
+}
+
+.hero small{
+    letter-spacing:4px;
+    font-weight:700;
+    color:#888;
+}
+
+.hero h1{
+    font-size:52px;
+    margin:15px 0;
+}
+
+.hero p{
+    color:#777;
+    max-width:650px;
+    margin:auto;
+}
+
+/* FILTER */
+
+.filter-section{
+    padding:40px 0 20px;
+    text-align:center;
+}
+
+.filter-btn{
+    border:1px solid #ddd;
+    background:white;
+    padding:10px 20px;
+    border-radius:30px;
+    margin:5px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#111;
+    color:white;
+    border-color:#111;
+}
+
+/* PRODUCTS */
+
+.products{
+    padding:40px 0 100px;
+}
+
+.product-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.07);
+    transition:.4s;
+    height:100%;
+}
+
+.product-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.13);
+}
+
+.product-img{
+    height:320px;
+    overflow:hidden;
+    position:relative;
+    background:#eee;
+}
+
+.product-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.product-card:hover .product-img img{
+    transform:scale(1.08);
+}
+
+.badge-custom{
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:#111;
+    color:white;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.product-info{
+    padding:20px;
+}
+
+.product-category{
+    color:#999;
+    font-size:11px;
+    letter-spacing:2px;
+    font-weight:700;
+}
+
+.product-info h5{
+    margin-top:8px;
+    margin-bottom:8px;
+}
+
+.rating{
+    color:#f4b400;
+    font-size:14px;
+}
+
+.price{
+    font-size:21px;
+    font-weight:800;
+    margin-top:10px;
+}
+
+.old-price{
+    font-size:14px;
+    color:#999;
+    text-decoration:line-through;
+    margin-left:6px;
+    font-weight:400;
+}
+
+.cart-btn{
+    width:100%;
+    border:0;
+    background:#111;
+    color:white;
+    padding:12px;
+    border-radius:8px;
+    margin-top:15px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.cart-btn:hover{
+    background:#333;
+    transform:translateY(-2px);
+}
+
+/* CART COUNT */
+
+.cart-icon{
+    position:relative;
+    margin-left:20px;
+}
+
+.cart-count{
+    position:absolute;
+    top:-10px;
+    right:-12px;
+    width:20px;
+    height:20px;
+    background:#111;
+    color:white;
+    border-radius:50%;
+    font-size:11px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:white;
+    padding:60px 0;
+    text-align:center;
+}
+
+footer p{
+    color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:767px){
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .product-img{
+        height:280px;
+    }
+
+    .filter-btn{
+        padding:8px 14px;
+        font-size:13px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+
+<div class="container">
+
+<a class="navbar-brand" href="index.html">
+<span class="brand-icon">N</span>
+NovaCart
+</a>
+
+<button class="navbar-toggler"
+data-toggle="collapse"
+data-target="#nav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+
+<ul class="navbar-nav ml-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Home</a>
+</li>
+
+<li class="nav-item active">
+<a class="nav-link" href="shop.html">Shop</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="product.html">Products</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="about.html">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a>
+</li>
+
+<li class="nav-item">
+
+<div class="cart-icon">
+
+<i class="fas fa-shopping-cart fa-lg"></i>
+
+<span class="cart-count" id="cartCount">0</span>
+
+</div>
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container">
+
+<small>NOVACART FASHION</small>
+
+<h1>Fashion For Everyone</h1>
+
+<p>
+Discover stylish and comfortable clothing for men, women,
+boys, girls and kids of every age.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FILTER -->
+
+<section class="filter-section">
+
+<div class="container">
+
+<button class="filter-btn active"
+onclick="filterProducts('all',this)">
+All Products
+</button>
+
+<button class="filter-btn"
+onclick="filterProducts('men',this)">
+Men
+</button>
+
+<button class="filter-btn"
+onclick="filterProducts('women',this)">
+Women
+</button>
+
+<button class="filter-btn"
+onclick="filterProducts('boys',this)">
+Boys
+</button>
+
+<button class="filter-btn"
+onclick="filterProducts('girls',this)">
+Girls
+</button>
+
+<button class="filter-btn"
+onclick="filterProducts('kids',this)">
+Kids
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products">
+
+<div class="container">
+
+<div class="row" id="productContainer">
+
+
+<!-- MEN -->
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item men">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">MEN</span>
+
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">MEN • T-SHIRT</span>
+
+<h5>Classic Cotton T-Shirt</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹899
+<span class="old-price">₹1,499</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item men">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">MEN</span>
+
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">MEN • SHIRT</span>
+
+<h5>Premium Formal Shirt</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹1,299
+<span class="old-price">₹1,999</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item men">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">MEN</span>
+
+<img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">MEN • JEANS</span>
+
+<h5>Classic Blue Jeans</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹1,799
+<span class="old-price">₹2,499</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item men">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">MEN</span>
+
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">MEN • JACKET</span>
+
+<h5>Casual Denim Jacket</h5>
+
+<div class="rating">★★★★☆</div>
+
+<div class="price">
+₹2,499
+<span class="old-price">₹3,499</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- WOMEN -->
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item women">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">WOMEN</span>
+
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">WOMEN • TOP</span>
+
+<h5>Elegant Casual Top</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹799
+<span class="old-price">₹1,299</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item women">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">WOMEN</span>
+
+<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">WOMEN • DRESS</span>
+
+<h5>Elegant Summer Dress</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹1,599
+<span class="old-price">₹2,499</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item women">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">WOMEN</span>
+
+<img src="https://images.unsplash.com/photo-1548624313-0396c75cebb5?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">WOMEN • JEANS</span>
+
+<h5>High Waist Jeans</h5>
+
+<div class="rating">★★★★☆</div>
+
+<div class="price">
+₹1,699
+<span class="old-price">₹2,399</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item women">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">WOMEN</span>
+
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">WOMEN • JACKET</span>
+
+<h5>Fashion Jacket</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹2,199
+<span class="old-price">₹3,199</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BOYS -->
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item boys">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">BOYS</span>
+
+<img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">BOYS • T-SHIRT</span>
+
+<h5>Cool Kids T-Shirt</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹499
+<span class="old-price">₹799</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item boys">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">BOYS</span>
+
+<img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">BOYS • SHIRT</span>
+
+<h5>Kids Casual Shirt</h5>
+
+<div class="rating">★★★★☆</div>
+
+<div class="price">
+₹699
+<span class="old-price">₹999</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item boys">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">BOYS</span>
+
+<img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">BOYS • PANTS</span>
+
+<h5>Comfort Cotton Pants</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹749
+<span class="old-price">₹1,099</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- GIRLS -->
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item girls">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">GIRLS</span>
+
+<img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">GIRLS • DRESS</span>
+
+<h5>Pretty Kids Dress</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹899
+<span class="old-price">₹1,299</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item girls">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">GIRLS</span>
+
+<img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">GIRLS • TOP</span>
+
+<h5>Girls Casual Top</h5>
+
+<div class="rating">★★★★☆</div>
+
+<div class="price">
+₹599
+<span class="old-price">₹899</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- KIDS -->
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item kids">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">KIDS</span>
+
+<img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">KIDS • HOODIE</span>
+
+<h5>Kids Winter Hoodie</h5>
+
+<div class="rating">★★★★★</div>
+
+<div class="price">
+₹999
+<span class="old-price">₹1,499</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item kids">
+
+<div class="product-card">
+
+<div class="product-img">
+
+<span class="badge-custom">KIDS</span>
+
+<img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=700&q=85">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">KIDS • SHORTS</span>
+
+<h5>Kids Cotton Shorts</h5>
+
+<div class="rating">★★★★☆</div>
+
+<div class="price">
+₹449
+<span class="old-price">₹699</span>
+</div>
+
+<button class="cart-btn" onclick="addCart(this)">
+<i class="fas fa-shopping-bag"></i>
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<h3>NovaCart</h3>
+
+<p>
+Fashion for Men • Women • Boys • Girls • Kids
+</p>
+
+<p>
+Style. Comfort. Simplicity.
+</p>
+
+<p class="mb-0">
+© 2026 NovaCart. All Rights Reserved.
+</p>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* FILTER PRODUCTS */
+
+function filterProducts(category,button){
+
+let products=document.querySelectorAll(".product-item");
+
+let buttons=document.querySelectorAll(".filter-btn");
+
+buttons.forEach(function(btn){
+    btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+products.forEach(function(product){
+
+if(category==="all"){
+    product.style.display="block";
+}
+
+else if(product.classList.contains(category)){
+    product.style.display="block";
+}
+
+else{
+    product.style.display="none";
+}
+
+});
+
+}
+
+
+/* CART */
+
+let cartCount=0;
+
+function addCart(button){
+
+cartCount++;
+
+document.getElementById("cartCount").innerText=cartCount;
+
+let original=button.innerHTML;
+
+button.innerHTML=
+'<i class="fas fa-check"></i> Added';
+
+button.style.background="#198754";
+
+setTimeout(function(){
+
+button.innerHTML=original;
+
+button.style.background="#111";
+
+},1500);
+
+}
+
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+```

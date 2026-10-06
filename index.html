@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaCart | Modern Online Shopping</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #222;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1180px;
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .main-navbar {
+            padding: 15px 0;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            z-index: 9999;
+        }
+
+        .main-navbar.scrolled {
+            padding: 9px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 800;
+            color: #111 !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            color: #fff;
+            border-radius: 12px;
+            margin-right: 10px;
+            font-weight: 800;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 8px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-item.active .nav-link {
+            color: #111 !important;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #111;
+            transition: 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-item.active .nav-link::after {
+            width: 70%;
+        }
+
+        .nav-shop-btn {
+            background: #111;
+            color: #fff !important;
+            padding: 11px 23px !important;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-shop-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 720px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg,
+                rgba(0,0,0,0.82) 0%,
+                rgba(0,0,0,0.60) 45%,
+                rgba(0,0,0,0.20) 100%),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 680px;
+            color: white;
+            padding-top: 70px;
+            animation: heroText 1s ease forwards;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.35);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: 68px;
+            line-height: 1.05;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #f5c542;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 590px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons .btn {
+            padding: 14px 27px;
+            border-radius: 40px;
+            font-weight: 600;
+            margin-right: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-dark-custom {
+            background: #fff;
+            color: #111;
+        }
+
+        .btn-dark-custom:hover {
+            background: #f5c542;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid rgba(255,255,255,0.6);
+            color: #fff;
+        }
+
+        .btn-outline-custom:hover {
+            background: #fff;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+        .hero-circle {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            right: -120px;
+            top: 130px;
+            animation: rotateCircle 18s linear infinite;
+        }
+
+        .hero-circle::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #f5c542;
+            border-radius: 50%;
+            top: 40px;
+            left: 70px;
+            box-shadow: 0 0 25px #f5c542;
+        }
+
+        @keyframes rotateCircle {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes heroText {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .gray-section {
+            background: #f7f7f7;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            max-width: 620px;
+            margin: auto;
+            color: #777;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           CATEGORY CARDS
+        ========================================================= */
+
+        .category-card {
+            position: relative;
+            height: 420px;
+            border-radius: 22px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            transition: 0.5s ease;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.16);
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.85),
+                rgba(0,0,0,0.05) 65%
+            );
+        }
+
+        .category-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            color: #fff;
+        }
+
+        .category-content h3 {
+            font-size: 27px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .category-content p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 17px;
+        }
+
+        .category-link {
+            color: #fff;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.6);
+            padding-bottom: 4px;
+        }
+
+
+        /* =========================================================
+           PRODUCT CARDS
+        ========================================================= */
+
+        .product-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 100%;
+            border: 1px solid #eee;
+            transition: 0.45s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            height: 290px;
+            background: #f4f4f4;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #111;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 3;
+        }
+
+        .product-wishlist {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            z-index: 3;
+            transition: 0.3s;
+        }
+
+        .product-wishlist:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        .product-info {
+            padding: 23px;
+        }
+
+        .product-category {
+            color: #999;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .product-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 8px 0 10px;
+        }
+
+        .rating {
+            font-size: 12px;
+            color: #f5b400;
+            margin-bottom: 13px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .old-price {
+            color: #aaa;
+            text-decoration: line-through;
+            font-size: 13px;
+            margin-left: 5px;
+        }
+
+        .quick-view {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #111;
+            border-radius: 30px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .quick-view:hover {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+        }
+
+
+        /* =========================================================
+           PROMO BANNER
+        ========================================================= */
+
+        .promo {
+            position: relative;
+            min-height: 380px;
+            border-radius: 25px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.88),
+                    rgba(0,0,0,0.25)
+                ),
+                url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1500&q=85")
+                center/cover;
+        }
+
+        .promo-content {
+            color: white;
+            padding: 50px;
+            max-width: 600px;
+        }
+
+        .promo-content span {
+            color: #f5c542;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .promo-content h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 15px 0;
+        }
+
+        .promo-content p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================================
+           SERVICES
+        ========================================================= */
+
+        .service-box {
+            padding: 35px 25px;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid #eee;
+            height: 100%;
+            transition: 0.4s;
+        }
+
+        .service-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .service-box h4 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .service-box p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================================
+           NEWSLETTER
+        ========================================================= */
+
+        .newsletter {
+            padding: 80px 20px;
+            text-align: center;
+            background: #111;
+            color: white;
+        }
+
+        .newsletter h2 {
+            font-weight: 800;
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            max-width: 550px;
+            margin: auto;
+            display: flex;
+            background: white;
+            padding: 5px;
+            border-radius: 50px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 13px 20px;
+            border-radius: 50px;
+        }
+
+        .newsletter-form button {
+            border: none;
+            background: #f5c542;
+            color: #111;
+            border-radius: 50px;
+            padding: 0 25px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+            background: #090909;
+            color: white;
+            padding: 60px 0 25px;
+        }
+
+        .footer-brand {
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .footer p {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer h5 {
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #888;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #1d1d1d;
+            color: #fff;
+            margin-right: 7px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #f5c542;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid #222;
+            margin-top: 40px;
+            padding-top: 20px;
+            color: #666;
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           MODAL
+        ========================================================= */
+
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-product-image {
+            height: 100%;
+            min-height: 430px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .modal-product-info {
+            padding: 40px;
+        }
+
+        .modal-product-info h3 {
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .modal-price {
+            font-size: 27px;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .modal-product-info p {
+            color: #777;
+            line-height: 1.8;
+        }
+
+        .modal-buy-btn {
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 13px 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .modal-buy-btn:hover {
+            background: #f5c542;
+            color: #111;
+        }
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        #backToTop {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: #111;
+            color: #fff;
+            display: none;
+            z-index: 999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        #backToTop:hover {
+            background: #f5c542;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 991px) {
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .nav-link {
+                margin: 7px 0;
+            }
+
+            .nav-shop-btn {
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+        }
+
+        @media (max-width: 767px) {
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .hero {
+                min-height: 650px;
+                background-position: center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-buttons .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .category-card {
+                height: 360px;
+            }
+
+            .product-image {
+                height: 320px;
+            }
+
+            .promo-content {
+                padding: 35px 25px;
+            }
+
+            .promo-content h2 {
+                font-size: 32px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                background: transparent;
+            }
+
+            .newsletter-form input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                min-height: 50px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top main-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <span class="brand-icon">N</span>
+            NovaCart
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#mainNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="mainNav">
+
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">
+                        Shop
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="product.html">
+                        Product
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+            <a href="shop.html"
+               class="nav-link nav-shop-btn ml-lg-3 text-center">
+                Shop Now
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-circle"></div>
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                NEW COLLECTION 2026
+            </span>
+
+            <h1>
+                Style That
+                <span>Moves With You.</span>
+            </h1>
+
+            <p>
+                Discover carefully selected fashion, accessories,
+                lifestyle products and everyday essentials designed
+                for modern living.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="shop.html"
+                   class="btn btn-dark-custom">
+                    Explore Collection
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+
+                <a href="#featured"
+                   class="btn btn-outline-custom">
+                    View Trending
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CATEGORIES
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="section-label">
+                SHOP BY CATEGORY
+            </span>
+
+            <h2>
+                Find Something You'll Love
+            </h2>
+
+            <p>
+                Explore our carefully selected collections
+                designed for your everyday lifestyle.
+            </p>
+
+        </div>
+
+
+        <div class="row">
+
+            <!-- Fashion -->
+
+            <div class="col-lg-4 col-md-6 mb-4 reveal">
+
+                <div class="category-card">
+
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1000&q=85"
+                         alt="Fashion collection">
+
+                    <div class="category-overlay"></div>
+
+                    <div class="category-content">
+
+                        <h3>
+                            Fashion
+                        </h3>
+
+                        <p>
+                            Modern styles for every occasion.
+                        </p>
+
+                        <a href="shop.html"
+                           class="category-link">
+                            Shop Collection
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Accessories -->
+
+            <div class="col-lg-4 col-md-6 mb-4 reveal">
+
+                <div class="category-card">
+
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85"
+                         alt="Accessories">
+
+                    <div class="category-overlay"></div>
+
+                    <div class="category-content">
+
+                        <h3>
+                            Accessories
+                        </h3>
+
+                        <p>
+                            Details that complete your look.
+                        </p>
+
+                        <a href="shop.html"
+                           class="category-link">
+                            Shop Collection
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Lifestyle -->
+
+            <div class="col-lg-4 col-md-6 mb-4 reveal">
+
+                <div class="category-card">
+
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85"
+                         alt="Lifestyle products">
+
+                    <div class="category-overlay"></div>
+
+                    <div class="category-content">
+
+                        <h3>
+                            Lifestyle
+                        </h3>
+
+                        <p>
+                            Essentials for better everyday living.
+                        </p>
+
+                        <a href="shop.html"
+                           class="category-link">
+                            Shop Collection
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURED PRODUCTS
+========================================================= -->
+
+<section class="section gray-section"
+         id="featured">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="section-label">
+                TRENDING NOW
+            </span>
+
+            <h2>
+                Our Featured Products
+            </h2>
+
+            <p>
+                Fresh arrivals and customer favorites selected
+                for quality, comfort and style.
+            </p>
+
+        </div>
+
+
+        <div class="row">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="col-lg-3 col-md-6 mb-4 reveal">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+                            NEW
+                        </span>
+
+                        <a href="#"
+                           class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </a>
+
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"
+                             alt="Classic Cotton Tee">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            FASHION
+                        </span>
+
+                        <h4>
+                            Classic Cotton Tee
+                        </h4>
+
+                        <div class="rating">
+                            ★★★★★
+                            <span class="text-muted ml-1">
+                                4.9
+                            </span>
+                        </div>
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <span class="price">
+                                    ₹799
+                                </span>
+
+                                <span class="old-price">
+                                    ₹999
+                                </span>
+
+                            </div>
+
+                            <button class="quick-view"
+                                    data-toggle="modal"
+                                    data-target="#productModal"
+                                    data-name="Classic Cotton Tee"
+                                    data-price="₹799"
+                                    data-image="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85">
+
+                                Quick View
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="col-lg-3 col-md-6 mb-4 reveal">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+                            SALE
+                        </span>
+
+                        <a href="#"
+                           class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </a>
+
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85"
+                             alt="Urban Runner Shoes">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            FOOTWEAR
+                        </span>
+
+                        <h4>
+                            Urban Runner Shoes
+                        </h4>
+
+                        <div class="rating">
+                            ★★★★★
+                            <span class="text-muted ml-1">
+                                4.8
+                            </span>
+                        </div>
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <span class="price">
+                                    ₹2,499
+                                </span>
+
+                                <span class="old-price">
+                                    ₹3,199
+                                </span>
+
+                            </div>
+
+                            <button class="quick-view"
+                                    data-toggle="modal"
+                                    data-target="#productModal"
+                                    data-name="Urban Runner Shoes"
+                                    data-price="₹2,499"
+                                    data-image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85">
+
+                                Quick View
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="col-lg-3 col-md-6 mb-4 reveal">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+                            POPULAR
+                        </span>
+
+                        <a href="#"
+                           class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </a>
+
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=85"
+                             alt="Classic Wrist Watch">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            ACCESSORIES
+                        </span>
+
+                        <h4>
+                            Classic Wrist Watch
+                        </h4>
+
+                        <div class="rating">
+                            ★★★★★
+                            <span class="text-muted ml-1">
+                                4.9
+                            </span>
+                        </div>
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <span class="price">
+                                    ₹1,899
+                                </span>
+
+                                <span class="old-price">
+                                    ₹2,399
+                                </span>
+
+                            </div>
+
+                            <button class="quick-view"
+                                    data-toggle="modal"
+                                    data-target="#productModal"
+                                    data-name="Classic Wrist Watch"
+                                    data-price="₹1,899"
+                                    data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=85">
+
+                                Quick View
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="col-lg-3 col-md-6 mb-4 reveal">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+                            BESTSELLER
+                        </span>
+
+                        <a href="#"
+                           class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </a>
+
+                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85"
+                             alt="Signature Fragrance">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            BEAUTY
+                        </span>
+
+                        <h4>
+                            Signature Fragrance
+                        </h4>
+
+                        <div class="rating">
+                            ★★★★★
+                            <span class="text-muted ml-1">
+                                4.7
+                            </span>
+                        </div>
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <span class="price">
+                                    ₹1,599
+                                </span>
+
+                                <span class="old-price">
+                                    ₹1,999
+                                </span>
+
+                            </div>
+
+                            <button class="quick-view"
+                                    data-toggle="modal"
+                                    data-target="#productModal"
+                                    data-name="Signature Fragrance"
+                                    data-price="₹1,599"
+                                    data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85">
+
+                                Quick View
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-4 reveal">
+
+            <a href="shop.html"
+               class="btn btn-dark px-4 py-3"
+               style="border-radius:40px;font-weight:600;">
+
+                View All Products
+                <i class="fas fa-arrow-right ml-2"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROMOTIONAL BANNER
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="promo reveal">
+
+            <div class="promo-content">
+
+                <span>
+                    SPECIAL OFFER
+                </span>
+
+                <h2>
+                    Upgrade Your Everyday Style
+                </h2>
+
+                <p>
+                    Discover premium products at prices
+                    you'll love. Limited-time offers available now.
+                </p>
+
+                <a href="shop.html"
+                   class="btn btn-warning px-4 py-3"
+                   style="border-radius:40px;font-weight:700;">
+
+                    Shop Deals
+                    <i class="fas fa-arrow-right ml-2"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section class="section gray-section">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="section-label">
+                WHY NOVACART?
+            </span>
+
+            <h2>
+                Shopping Made Simple
+            </h2>
+
+            <p>
+                Everything you need for a smooth and enjoyable
+                shopping experience.
+            </p>
+
+        </div>
+
+
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4 reveal">
+
+                <div class="service-box">
+
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+
+                    <h4>
+                        Fast Delivery
+                    </h4>
+
+                    <p>
+                        Reliable delivery with careful packaging
+                        and easy order tracking.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 mb-4 reveal">
+
+                <div class="service-box">
+
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+
+                    <h4>
+                        Quality Products
+                    </h4>
+
+                    <p>
+                        Carefully selected products with quality,
+                        usefulness and value in mind.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 mb-4 reveal">
+
+                <div class="service-box">
+
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+
+                    <h4>
+                        Customer First
+                    </h4>
+
+                    <p>
+                        Friendly support and simple policies
+                        whenever you need assistance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     NEWSLETTER
+========================================================= -->
+
+<section class="newsletter">
+
+    <div class="container">
+
+        <h2>
+            Stay In The Loop
+        </h2>
+
+        <p>
+            Subscribe for new arrivals, exclusive offers and updates.
+        </p>
+
+        <form class="newsletter-form">
+
+            <input type="email"
+                   placeholder="Enter your email address"
+                   required>
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-5 mb-4">
+
+                <div class="footer-brand">
+                    NovaCart
+                </div>
+
+                <p>
+                    Simple shopping. Better choices.
+                    Discover products designed for
+                    modern everyday living.
+                </p>
+
+                <div class="social-links mt-4">
+
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 col-6 mb-4">
+
+                <h5>
+                    QUICK LINKS
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="shop.html">
+                            Shop
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="product.html">
+                            Products
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-4 col-6 mb-4">
+
+                <h5>
+                    SUPPORT
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="contact.html">
+                            Contact Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Shipping Information
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Returns & Refunds
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Privacy Policy
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright text-center">
+
+            &copy; 2026 NovaCart.
+            All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     PRODUCT MODAL
+========================================================= -->
+
+<div class="modal fade"
+     id="productModal"
+     tabindex="-1"
+     role="dialog">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered"
+         role="document">
+
+        <div class="modal-content">
+
+            <div class="row no-gutters">
+
+                <div class="col-md-6">
+
+                    <img id="modalImage"
+                         class="modal-product-image"
+                         src=""
+                         alt="Product">
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="modal-product-info">
+
+                        <button type="button"
+                                class="close"
+                                data-dismiss="modal">
+
+                            <span>&times;</span>
+
+                        </button>
+
+                        <span class="product-category">
+                            NOVACART COLLECTION
+                        </span>
+
+                        <h3 id="modalName"
+                            class="mt-3">
+                            Product Name
+                        </h3>
+
+                        <div class="rating mt-3">
+                            ★★★★★
+                            <span class="text-muted ml-2">
+                                4.9 / 5
+                            </span>
+                        </div>
+
+                        <div id="modalPrice"
+                             class="modal-price">
+                            ₹799
+                        </div>
+
+                        <p>
+                            Carefully selected for quality,
+                            comfort and modern everyday use.
+                            Add this product to your collection
+                            and enjoy a premium shopping experience.
+                        </p>
+
+                        <button class="modal-buy-btn mt-3">
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            Add To Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- BACK TO TOP -->
+
+<button id="backToTop">
+
+    <i class="fas fa-arrow-up"></i>
+
+</button>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+    /* =========================================================
+       NAVBAR SCROLL EFFECT
+    ========================================================= */
+
+    $(window).on("scroll", function () {
+
+        if ($(window).scrollTop() > 50) {
+
+            $(".main-navbar").addClass("scrolled");
+
+        } else {
+
+            $(".main-navbar").removeClass("scrolled");
+
+        }
+
+    });
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    function revealElements() {
+
+        $(".reveal").each(function () {
+
+            let elementTop = $(this).offset().top;
+
+            let windowBottom =
+                $(window).scrollTop() +
+                $(window).height();
+
+            if (elementTop < windowBottom - 80) {
+
+                $(this).addClass("active");
+
+            }
+
+        });
+
+    }
+
+    $(window).on("scroll", revealElements);
+
+    $(document).ready(function () {
+
+        revealElements();
+
+    });
+
+
+    /* =========================================================
+       PRODUCT MODAL
+    ========================================================= */
+
+    $(".quick-view").on("click", function () {
+
+        let productName =
+            $(this).data("name");
+
+        let productPrice =
+            $(this).data("price");
+
+        let productImage =
+            $(this).data("image");
+
+        $("#modalName")
+            .text(productName);
+
+        $("#modalPrice")
+            .text(productPrice);
+
+        $("#modalImage")
+            .attr("src", productImage);
+
+        $("#modalImage")
+            .attr("alt", productName);
+
+    });
+
+
+    /* =========================================================
+       BACK TO TOP
+    ========================================================= */
+
+    $(window).on("scroll", function () {
+
+        if ($(window).scrollTop() > 400) {
+
+            $("#backToTop").fadeIn();
+
+        } else {
+
+            $("#backToTop").fadeOut();
+
+        }
+
+    });
+
+
+    $("#backToTop").on("click", function () {
+
+        $("html, body").animate({
+
+            scrollTop: 0
+
+        }, 700);
+
+    });
+
+
+    /* =========================================================
+       NEWSLETTER
+    ========================================================= */
+
+    $(".newsletter-form").on("submit", function (e) {
+
+        e.preventDefault();
+
+        let email =
+            $(this).find("input").val();
+
+        if (email !== "") {
+
+            alert(
+                "Thank you for subscribing to NovaCart!"
+            );
+
+            $(this)[0].reset();
+
+        }
+
+    });
+
+
+    /* =========================================================
+       WISHLIST
+    ========================================================= */
+
+    $(".product-wishlist").on("click", function (e) {
+
+        e.preventDefault();
+
+        let icon =
+            $(this).find("i");
+
+        icon.toggleClass("far fas");
+
+        $(this).toggleClass("active");
+
+    });
+
+
+    /* =========================================================
+       CLOSE MOBILE NAVBAR AFTER CLICK
+    ========================================================= */
+
+    $(".navbar-nav .nav-link").on("click", function () {
+
+        $(".navbar-collapse").collapse("hide");
+
+    });
+
+</script>
+
+
+</body>
+</html>
